@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.ttw.databindingsample.SimpleViewModel" />
+
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/txtSample"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="@{Integer.toString(viewModel.likes)}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imgSample"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            app:popularityIcon="@{viewModel.popularity}"
+            app:layout_constraintEnd_toEndOf="@+id/txtSample"
+            app:layout_constraintStart_toStartOf="@+id/txtSample"
+            app:layout_constraintTop_toBottomOf="@+id/txtSample"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <Button
+            android:id="@+id/btnSample"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="Button"
+            android:onClick="@{()->viewModel.onLike()}"
+            app:layout_constraintEnd_toEndOf="@+id/imgSample"
+            app:layout_constraintStart_toStartOf="@+id/imgSample"
+            app:layout_constraintTop_toBottomOf="@+id/imgSample" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
